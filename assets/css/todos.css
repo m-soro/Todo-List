@@ -1,5 +1,8 @@
 body {
   font-family: 'Assistant', sans-serif;
+  background: #a8ff78;  /* get this gradient from https://uigradients.com/ fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #78ffd6, #a8ff78); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 h1 {
@@ -12,10 +15,49 @@ h1 {
   font-weight: 400;
 }
 
+.fa-clipboard-list {
+  float: right; /* clipboard icon float to right */
+}
+
+#container {
+  width:300px;
+  margin: 100px auto;
+  background-color: #f7f7f7;
+  box-shadow: 0 0 3px rgba(0,0,0,0.1);
+}
+
+input {
+  font-size: 18px;
+  background-color: #f7f7f7;
+  width: 100%;
+  padding: 13px 13px 13px 20px;
+  color: #2980b9;
+  box-sizing: border-box; /* fixes the input being too large in the div */
+  border: 3px solid rgba(0, 0, 0, 0); /* adds an invisible border so it looks flush*/
+}
+
+input:focus {
+  background: white;
+  border: solid 3px #2980b9;
+  outline: none;
+}
+
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+span {
+  background: #e74c3c;
+  height: 40px;
+  margin-right: 20px;
+  text-align: center;
+  color: white;
+  width: 0; /* hide the trash icon and display the full width on li:hover span */
+  display: inline-block;
+  transition: 0.2s linear; /* add animation easing when revealing the trash icon */
+  opacity: 0; /* without opacity property set to zero there is an outline of trash can visible even when hidden. */
 }
 
 li {
@@ -29,26 +71,9 @@ li:nth-child(2n) {
   background: #f7f7f7; /* creates the alternating color in the list */
 }
 
-input {
-  font-size: 18px;
-  background-color: #f7f7f7;
-  width: 100%;
-  padding: 13px 13px 13px 20px;
-  color: #2980b9;
-  box-sizing: border-box; /* fixes the input being too large in the div */
-}
-
-input:focus {
-  background:white;
-  border: solid 3px #2980b9;
-  outline: none;
-}
-
-#container {
-  width:300px;
-  margin: 100px auto;
-  background-color: #f7f7f7;
-  box-shadow: 0 0 3px rgba(0,0,0,0.1);
+li:hover span{
+  width: 40px; /* reveal the trash icon */
+  opacity: 1.0;
 }
 
 .completed {
