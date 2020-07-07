@@ -17,8 +17,23 @@
 //       textDecoration: 'line-through' // text-decoration: 'line-through', wrong syntax js does not allow '-'
 //     });
 //   }
-// }); or avoid all of this by using just toggle class
+// }); or avoid all of this by using just toggle class like below
 
 $('li').click(function(){
   $(this).toggleClass('completed');
+});
+
+$('span').click(function(event){ // click span to remove item
+  $(this).parent().fadeOut(300,function(){ //.parent will remove the span's parent's which is the list.
+    $(this).remove();
+  });
+  event.stopPropagation(); // added event and event.stopPropagation to disable event bubbling.
+});
+
+$("input[type='text']").keypress(function(event){
+  if(event.which === 13){ // 13 is the key value of enter
+    let toDoInput = $(this).val(); // take the input and save it on a variable.
+    $(this).val(''); // clear the text area
+    $('ul').append('<li><span><i class="fa fa-trash"></i></span> '+ toDoInput +'</li>') // append the to do variable in the list.
+  }
 });
