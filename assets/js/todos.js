@@ -24,6 +24,7 @@ $('ul').on('click','li', (function(){ //on() will add the click event listener t
   })
 );
 
+
 $('ul').on('click', 'span', (function(event){ // click span to remove item
   $(this).parent().fadeOut(300, function(){ //.parent will remove the span's parent's which is the list.
     $(this).remove();
