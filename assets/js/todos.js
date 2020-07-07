@@ -19,16 +19,19 @@
 //   }
 // }); or avoid all of this by using just toggle class like below
 
-$('li').click(function(){
-  $(this).toggleClass('completed');
-});
+$('ul').on('click','li', (function(){ //on() will add the click event listener to non existing lists
+  $(this).toggleClass('completed'); // compare to just click.
+  })
+);
 
-$('span').click(function(event){ // click span to remove item
-  $(this).parent().fadeOut(300,function(){ //.parent will remove the span's parent's which is the list.
+$('ul').on('click', 'span', (function(event){ // click span to remove item
+  $(this).parent().fadeOut(300, function(){ //.parent will remove the span's parent's which is the list.
     $(this).remove();
   });
   event.stopPropagation(); // added event and event.stopPropagation to disable event bubbling.
-});
+  })
+);
+
 
 $("input[type='text']").keypress(function(event){
   if(event.which === 13){ // 13 is the key value of enter
